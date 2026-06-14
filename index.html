@@ -3,44 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Funcionários</title>
+    <title>Login - Sistema de Funcionários</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Sistema de Cadastro de Funcionários</h1>
-    </header>
-
-    <main>
-        <section class="form-section">
-            <h2>Novo Colaborador</h2>
-            <form id="form-funcionario">
+    <main class="login-container">
+        <section class="form-section login-box">
+            <h2>Acesso ao Sistema</h2>
+            <form id="form-login">
                 <div class="input-group">
-                    <input type="text" id="nome" placeholder="Nome completo" required>
-                    <input type="email" id="email" placeholder="E-mail" required>
+                    <input type="text" id="login-usuario" placeholder="E-mail ou Login (Ex: admin)" required>
                 </div>
                 <div class="input-group">
-                    <input type="text" id="cargo" placeholder="Cargo" required>
-                    <input type="text" id="departamento" placeholder="Departamento" required>
+                    <input type="password" id="login-senha" placeholder="Senha" required>
                 </div>
-                <div class="input-group">
-                    <input type="password" id="senha" placeholder="Senha" required>
-                </div>
-                <button type="submit">Cadastrar Funcionário</button>
+                <button type="submit">Entrar</button>
+                <p id="mensagem-erro" class="erro" style="display: none;">Usuário ou senha inválidos.</p>
             </form>
-        </section>
-
-        <section class="dashboard-section">
-            <div class="dashboard-header">
-                <h2>Lista de Funcionários</h2>
-                <span id="contador">Total: 0</span>
-            </div>
-            
-            <div id="lista-funcionarios" class="cards-container">
-                </div>
         </section>
     </main>
 
-    <script src="script.js"></script>
+    <script src="login.js"></script>
 </body>
 </html>

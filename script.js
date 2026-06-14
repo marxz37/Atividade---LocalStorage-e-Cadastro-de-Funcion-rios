@@ -1,3 +1,20 @@
+const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado'));
+
+// Se não houver usuário logado, expulsa para o login
+if (!usuarioLogado) {
+    window.location.href = 'index.html';
+} 
+// Se houver usuário logado, mas NÃO for admin, manda para a área dele
+else if (usuarioLogado.perfil !== 'admin') {
+    window.location.href = 'boasvindas.html';
+}
+
+// --- LOGOUT ---
+document.getElementById('btn-sair').addEventListener('click', () => {
+    sessionStorage.removeItem('usuarioLogado');
+    window.location.href = 'index.html';
+});
+
 const formFuncionario = document.getElementById('form-funcionario');
 const listaFuncionarios = document.getElementById('lista-funcionarios');
 const contadorElemento = document.getElementById('contador');
@@ -10,7 +27,6 @@ function salvarNoLocalStorage() {
 
 function renderizarTela() {
     listaFuncionarios.innerHTML = '';
-
     contadorElemento.textContent = `Total: ${funcionarios.length}`;
 
     funcionarios.forEach(funcionario => {
@@ -47,13 +63,10 @@ function cadastrarFuncionario(evento) {
     };
 
     funcionarios.push(novoFuncionario);
-
     salvarNoLocalStorage();
     renderizarTela();
-
     formFuncionario.reset();
 }
 
 formFuncionario.addEventListener('submit', cadastrarFuncionario);
-
 renderizarTela();
